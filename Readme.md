@@ -1,7 +1,7 @@
 # Личный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
 
 * Студент: [Михаил Ещенко](https://up.htmlacademy.ru/ecmascript/9/user/1154945).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Назаров](https://htmlacademy.ru/profile/id927883).
 
 ---
 
