@@ -45,13 +45,22 @@ const getTask = () => ({
   isFavorite: Boolean(Math.round(Math.random())),
   isArchive: Boolean(Math.round(Math.random()))
 });
+const filters = [
+  {title: `All`, count:0 },
+  {title: `Overdue`, count: 0},
+  {title: `Today`, count: 0},
+  {title: `Favorites`, count: 1},
+  {title: `Repeating`, count: 0},
+  {title: `Tags`, count: 0},
+  {title: `Archive`, count: 0},
+];
 
 const controlContainer = document.querySelector(`.main__control`);
 const mainContainer = document.querySelector(`.main`);
 
 render(controlContainer, createMenuComponent(), `beforeend`);
 render(mainContainer, createSearchComponent(), `beforeend`);
-render(mainContainer, createFilterComponent(), `beforeend`);
+render(mainContainer, createFilterComponent(filters), `beforeend`);
 render(mainContainer, createBoardContainerComponent(), `beforeend`);
 
 const boardContainer = document.querySelector(`.board`);
