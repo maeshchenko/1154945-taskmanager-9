@@ -5,7 +5,7 @@ export const createFilterComponent = (filtersArr) => {
         id="filter__overdue"
         class="filter__input visually-hidden"
         name="filter"
-        disabled
+        ${filter.count === 0 ? `disabled` : ``}
       />
       <label for="filter__overdue" class="filter__label">${filter.title} <span class="filter__${filter.name}-count">${filter.count}</span></label>`
   ).join(``)}
