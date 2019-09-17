@@ -1,5 +1,6 @@
 export const createEditTaskCardComponent = ({description, dueDate, tags, repeatingDays, color, isFavorite, isArchive}) => {
-  return `<article class="card card--edit card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
+  const isRepeated = Object.values(repeatingDays).some((day) => day);
+  return `<article class="card card--edit card--${color} ${isRepeated ? `card--repeat` : ``}">
             <form class="card__form" method="get">
               <div class="card__inner">
                 <div class="card__control">
@@ -50,7 +51,7 @@ export const createEditTaskCardComponent = ({description, dueDate, tags, repeati
                       </fieldset>
 
                       <button class="card__repeat-toggle" type="button">
-                        repeat:<span class="card__repeat-status">${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `yes` : `no`}</span>
+                        repeat:<span class="card__repeat-status">${isRepeated ? `yes` : `no`}</span>
                       </button>
 
                       <fieldset class="card__repeat-days">
@@ -58,12 +59,12 @@ export const createEditTaskCardComponent = ({description, dueDate, tags, repeati
                           ${Object.keys(repeatingDays).map((day) => `<input
                                 class="visually-hidden card__repeat-day-input"
                                 type="checkbox"
-                                id="repeat-mo-4"
+                                id="repeat-${day}-4"
                                 name="repeat"
                                 value="${day}"
                                 ${repeatingDays[day] ? `checked` : ``}
                             />
-                            <label class="card__repeat-day" for="repeat-mo-4">${day}</label>`).join(``)}
+                            <label class="card__repeat-day" for="repeat-${day}-4">${day}</label>`).join(``)}
                         </div>
                       </fieldset>
                     </div>

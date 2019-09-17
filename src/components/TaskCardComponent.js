@@ -1,5 +1,6 @@
 export const createTaskCardComponent = ({description, dueDate, tags, repeatingDays, color, isFavorite, isArchive}) => {
-  return `<article class="card card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
+  const isRepeated = Object.values(repeatingDays).some((day) => day);
+  return `<article class="card card--${color} ${isRepeated ? `card--repeat` : ``}">
             <div class="card__form">
               <div class="card__inner">
                 <div class="card__control">
@@ -33,6 +34,7 @@ export const createTaskCardComponent = ({description, dueDate, tags, repeatingDa
                       <div class="card__date-deadline">
                         <p class="card__input-deadline-wrap">
                           <span class="card__date">${new Date(dueDate).toDateString()}</span>
+                          <span class="card__time">${new Date(dueDate).getHours()}:${new Date(dueDate).getMinutes()}</span>
                         </p>
                       </div>
                     </div>
@@ -52,5 +54,5 @@ export const createTaskCardComponent = ({description, dueDate, tags, repeatingDa
                 </div>
               </div>
             </div>
-          </article>`.trim();
+          </article>`;
 };

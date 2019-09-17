@@ -48,11 +48,11 @@ let taskLoadState = {
 export const pushTasks = () => {
   const {current, step, max} = taskLoadState;
   taskLoadState.current += step;
-  if (taskLoadState.current > max) {
+  if (taskLoadState.current >= max) {
     loadMore.style.display = `none`;
   }
   const currentTasksArray = tasks.slice(current, current + step);
-  for (let i = 0; i < currentTasksArray.length; i++) {
+  for (let i = 1; i < currentTasksArray.length; i++) {
     render(tasksContainer, createTaskCardComponent(tasks[i]), `beforeend`);
   }
 };
